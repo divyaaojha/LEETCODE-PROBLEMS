@@ -6,10 +6,11 @@ class Solution {
             int sum =0;
             for(int j =0; j<accounts[0].length; j++){
                 sum += accounts[i][j];
-                if(sum>maxi){
+                
+            }
+            if(sum>maxi){
                     maxi =sum;
                 }
-            }
         }
         return maxi;
     }
