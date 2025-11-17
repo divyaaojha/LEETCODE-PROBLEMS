@@ -1,18 +1,19 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        int n = nums.length;
-        int[] expected_num =new int[n];
-        int index =0;
-        for(int i =0; i<n; i++){
-            if(nums[i] != val){
-                expected_num[index++]=nums[i]; 
+        int count=nums.length;
+        int []temp = new int[nums.length]; int ind=0;
+        for(int num:nums){
+            if(num==val)count--;
+          else{
+            temp[ind++]=num;
+          }
             
-            }
         }
-        for(int i =0; i<index; i++){
-            nums[i]= expected_num[i];
-        }
-        return index;
 
+        for(int i =0; i<temp.length; i++){
+            nums[i]=temp[i];
+        }
+        
+        return count;
     }
 }
