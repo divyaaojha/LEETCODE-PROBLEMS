@@ -1,43 +1,28 @@
-class Solution {
+ class Solution {
+    public void rotate(int[] nums, int k) {
+    
+        int n =nums.length;
 
-    public static int[] reverse(int[] nums, int l , int h){
-        int i = l; int j =h;
-        while(i<j){
-            int temp = nums[i];
-            nums[i]=nums[j];
-            nums[j]= temp;
+        k = k % n;  // important
+    
+      
+        int[]temp = new int[n];
+    
 
-            i++;
-            j--;
+    int m =0;
+
+        for(int j =n-k; j<n; j++){
+            temp[m++]= nums[j];
+            
         }
 
-        return nums;
-    }
-    public void rotate(int[] nums, int k) {
+        for(int l= 0; l<n-k; l++){
+             temp[m++]= nums[l];
+        }
+        for(int g =0; g<n; g++){
+            nums[g]=temp[g];
+        }
+        //wrong- index out of bound
 
-    
-        int n = nums.length;
-        k = k%n;
-      reverse(nums, 0, n-k-1);
-      reverse(nums, n-k, n-1);
-      reverse(nums, 0, n-1);
-        for(int m =0; m<n; m++){
-            System.out.print(nums[m]);
-       }
-
-        
-          //o(n) tc ,  o(n) sc.  
-    //     int n = nums.length;
-    //     int[] temp = new int[n];
-    //    for(int i =0; i<n; i++){
-    //     int index= (i+k)%n;
-    //     temp[index]= nums[i];
-    //    }
-
-    //     for(int i =0; i<n; i++){
-    //         nums[i]=temp[i];
-    //         System.out.print(nums[i]);
-    //     }
-        
     }
 }
