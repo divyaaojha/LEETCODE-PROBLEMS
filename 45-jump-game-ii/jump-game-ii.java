@@ -25,15 +25,18 @@ class Solution {
 
         int n = nums.length;
         int jump =0;
-         if(n==1 ){
-         return 0;}
-        int farthest =0; int currend =0;
+        //  if(n==1 ){
+        //  return 0;}
+        int farthest =0; 
+        int currend =0;
         for(int i =0; i<n-1; i++){
+            //we are calculating farthest in every step
             farthest = Math.max(farthest, i + nums[i]);
+
             if(i == currend){
-                //we have to jump here
+                //we have to jump here, only when curr end is at current index i
                 jump++;
-                //update currend now
+                //update currend now, since we took a jump, so we can reach maxReach from here, so currend= farthest
                 currend = farthest;
             }
             
