@@ -1,30 +1,19 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-
         int n = nums.length;
-
-        k = k % n; // important
-
+        k = k%n;
         int[] temp = new int[n];
+        for(int i =0; i<n; i++){
+            //move every step ahead by k
+            temp[(i+k) %n] = nums[i];
 
-        int m = 0;
-
-        for (int j = n - k; j < n; j++) {
-            temp[m++] = nums[j];
+        }
+        for(int i =0; i<n; i++){
+            //move every step ahead by k
+            nums[i]= temp[i];
 
         }
 
-        //FIRST : N-K, TO N = that means k elements copied
-
-        for (int l = 0; l < n - k; l++) {
-            temp[m++] = nums[l];
-        }
-
-        //then : 0 to n-k elements copied.
-        for (int g = 0; g < n; g++) {
-            nums[g] = temp[g];
-        }
-        //wrong- index out of bound
 
     }
 }
