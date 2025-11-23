@@ -1,18 +1,40 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int n = nums.length;
+        HashMap<Integer, Integer> m= new HashMap<>();
+        int majority=0; int maxi=0;
         for(int num: nums){
-             map.put(num, map.getOrDefault(num,0)+1);
+            m.put(num, m.getOrDefault(num,0)+1);
         }
-        int majority=0;
-        int maxi =0;
 
-        for(int key : map.keySet()){
-            if(map.get(key) > maxi){
-                maxi = map.get(key);
+        for(int key :m.keySet()){
+            if(m.get(key) > maxi){
+                maxi = m.get(key);
                 majority = key;
             }
         }
-return majority;
+        return majority;
+
+
+        //TLE********** BUT WORKS
+        // Arrays.sort(nums);
+        // int major=0;
+        // int n = nums.length;
+        // int count=1; int maxcount=0;int index =0;
+        // for(int i =1; i<n; i++){
+
+        //     for(int j =i+1; j<n; j++){
+        //         if(nums[i]==nums[j]){
+        //             count++;
+        //             if(maxcount<count){
+        //                 maxcount= count;
+        //                 index =j;
+        //             }
+        //         }
+        //     }
+        //     count=1;
+            
+        // }
+        // return nums[index];
     }
 }
