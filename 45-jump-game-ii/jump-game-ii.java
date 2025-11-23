@@ -3,6 +3,8 @@ class Solution {
         int n = nums.length;
         int farthest =0;
         int currend=0; int count=0;
+
+        //see n-1, because we can jump from n-2 to n-1 last, but we cant go anywhere from n-1(last step, so the second last step is the last valif index to be explored) 
         for(int i =0; i<n-1 ; i++){
             
             //everytime we get a better far value we update it 
