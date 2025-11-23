@@ -1,48 +1,25 @@
 class Solution {
     public int jump(int[] nums) {
-
-
-        //FIRST TRY*******************************************************
-        // 57 / 110 testcases passe**************************************************************
-        // int n = nums.length; int maxReach = 0;
-        // int count=0;
-
-        // if(n==1 ){
-        //     return 0;
-        // }
-        // for(int i =0; i<n; i++){
-        //     int reach = nums[i]+i;
-        //    if(reach > maxReach){
-        //      maxReach = reach;
-        //      count++;
-        //    }
-            
-        //     if(maxReach>= n-1){
-        //         return count;
-        //     }
-        // }
-        // return count;
-
         int n = nums.length;
-        int jump =0;
-        //  if(n==1 ){
-        //  return 0;}
-        int farthest =0; 
-        int currend =0;
-        for(int i =0; i<n-1; i++){
-            //we are calculating farthest in every step
-            farthest = Math.max(farthest, i + nums[i]);
-
-            if(i == currend){
-                //we have to jump here, only when curr end is at current index i
-                jump++;
-                //update currend now, since we took a jump, so we can reach maxReach from here, so currend= farthest
-                currend = farthest;
-            }
+        int farthest =0;
+        int currend=0; int count=0;
+        for(int i =0; i<n-1 ; i++){
             
+            //everytime we get a better far value we update it 
+            farthest =Math.max(farthest, nums[i] +i);
 
+
+            //loop keeps going, and when current-end reaches the i index, then wehave to extend the current-end, so we update it
+            //i.e we only jump when required(we reach limit), and current end always has best max jump values (as we update it with farthest)
+            if(i == currend){
+                count++;
+                currend=farthest;
+            }
+
+            
 
         }
-        return jump;
+
+        return count;
     }
 }
