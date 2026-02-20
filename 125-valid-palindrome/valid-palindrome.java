@@ -1,32 +1,33 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        //its easy, see its basically that only using 2 pointers.
-        //but the twist here is: we have to ignore non alphanumeric characters, and also not case sensitive
-        int start=0;
-        int end= s.length() -1;
-        while(start < end){
-            while(start < end && ! Character.isLetterOrDigit(  s.charAt(start)  )){
-                start++;
-                //move left pointer to a valid character, ignoring others
+        StringBuilder sb = new StringBuilder();
+        for(char c : s.toCharArray()){
+            if(Character.isLetterOrDigit(c)){
+                sb.append(Character.toLowerCase(c));
             }
-
-            while(start<end && ! Character.isLetterOrDigit(s.charAt(end)) ){
-                end--;
-                //move right pointer to a valid character, ignoring others
-            }
-
-            //now valid syntax reached, so compare, and (A==a) remember
-
-            if(Character.toLowerCase(s.charAt(start)) == Character.toLowerCase(s.charAt(end))){
-                start++; end--;
-            }
-            //else means not equalso- not a palindrome
-            else{
-                 return false;
-            }
-
         }
 
+        int left =0; int right = sb.length()-1;
+        while(left < right){
+
+            if(sb.charAt(left)  !=sb.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+
+        }
         return true;
     }
+
+    // it doesnt ignore uppercase, and alphanumeric characters and spaces
+    // private boolean recur(String s, int len){
+    //     if(len >= s.length()/2){
+    //         return true;
+    //     }
+    //     if(s.charAt(len) != s.charAt(s.length()- len -1)){
+    //         return false;
+    //     }
+    //     return  recur(s, len+1);
+    // }
 }
