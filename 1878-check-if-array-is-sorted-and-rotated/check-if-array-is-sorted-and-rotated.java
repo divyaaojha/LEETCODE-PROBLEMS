@@ -1,21 +1,33 @@
 class Solution {
     public boolean check(int[] nums) {
-        // in a normal sorted rotated array, there will be only 1 drop, where prev larger than next ele
-        int drop =0;
-        int n = nums.length;
-        for(int i =0; i<n; i++){
-            int next = (i+1)%n;
-            if(nums[i]>nums[next]){
-                drop++;
-                if(drop>1){
-                    return false;
-                }
+int count=0;
+for(int i =0; i<nums.length; i++){
+        if( nums[i % nums.length] > nums[(i+1) % nums.length] ){
+            count++;
+            if (count >1){
+                return false;
             }
-
         }
-
-        //if i again check here that, when drop ==1, then true,
-        // it will be wrong, as there may be no drops at all, like for 1,1,1,1
+       }
        return true;
+
+
+        //using formula, finding pivot, then *************************************
+    //    int max = Integer.MAX_VALUE;
+    //    int index=0;
+    //    //FIND MIN ELE- ITS INDEX IS PIVOT, AND THEN USE IT IN THE FORMULA, PIVOT= X
+    //    for(int i =0; i<nums.length; i++){
+    //     if(nums[i] <max){
+    //         max = nums[i];
+    //         index =i;
+    //     }
+    //    }
+
+    //    for(int i =1; i<nums.length; i++){
+    //     if( nums[(i+index) % nums.length] < nums[(i-1+index) % nums.length] ){
+    //         return false;
+    //     }
+    //    }
+    //    return true;
     }
 }
