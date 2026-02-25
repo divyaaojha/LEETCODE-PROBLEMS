@@ -1,31 +1,41 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        // int index=0;
-        // int n = nums.length;
-        // for(int i =0; i<n; i++){
-        //     if(nums[i]!=0){
-        //         nums[index]=nums[i];
-        //         index++;
-        //     }
-        // }
-        // for(int i= index; i<n; i++){
-        //     nums[i]=0;
-        // }
-        // for(int i =0; i<n;i++){
-        //     System.out.print(nums[i]);
-        // }
+        //in-place Solution
+        int index =0;
+        for(int i =0; i<nums.length; i++){
+            if(nums[i] !=0){
 
-         int index = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                // swap nums[i] with nums[index] if i > index
-                if (i != index) {
-                    int temp = nums[i];
-                    nums[i] = nums[index];
-                    nums[index] = temp;
+                //swap isnt necessary when i and index are same , we swap only when element is not zero, and index and i are different
+                if(i != index){
+                // swap this to the index position as that has the latest zero
+                int temp = nums[index];
+                nums[index]= nums[i];
+                nums[i]= temp;
+                
                 }
-                index++;
+                index ++;
+                
             }
         }
+
+//wont work, as they need it to be in-place
+//        int count=0;
+//        for(int i =0; i<nums.length; i++){
+//         if(nums[i] ==0){
+//             count++;
+//             nums[i]= Integer.MAX_VALUE;
+//         }
+//        } 
+//        if(count>0){
+//  Arrays.sort(nums);
+//        }
+      
+
+// for(int i =0; i<nums.length; i++){
+//         if(nums[i] ==Integer.MAX_VALUE){
+//             count++;
+//             nums[i]=0 ;
+//         }
+//        }
     }
 }
