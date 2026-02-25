@@ -1,49 +1,21 @@
 class Solution {
     public int missingNumber(int[] nums) {
 
-        // app 1- using expected sum
+        //using treeset
         int n = nums.length;
-        int sum = n * (n+1)/2;
-        int temp=0;
-        for(int i =0; i<n; i++){
-            temp+=nums[i];
+        TreeSet <Integer> keyset = new TreeSet<>();
+       
+        for(int i = 0; i< nums.length; i++){
+            keyset.add(nums[i]);
         }
-        return sum-temp;
-
-
-        //app2 - using xor or bitwise or ^
-        // int n = nums.length;
-        // int xor = n; // n^n =0;
-        // for(int i =0; i< n ; i++){
-        //     xor ^= i^nums[i];
-        // } 
-
-        // return xor;
-
-
-
-        // inefficient wrong ans, passed 112/122 cases
-        // Arrays.sort(nums);
-        // int n = nums.length;
-        // int i = 1;
-        // if(n==2){
-        //     if((nums[0]+1) != nums[1]){
-        //         return (nums[0]+1);
-        //     }
-        //     else if(nums[0]!=0){
-        //         return 0;
-        //     }
-        //     else{
-        //         return n;
-        //     }
-        // }
-        // while(i<n){
-        //     if(nums[i] != (nums[i-1]+1)){
-        //         return (nums[i-1]+1);
-        //     }
-        //     i++;
-    
-        // }
-        // return 0;
+        
+        for(int i =0; i<=n ; i++){
+            if(! keyset.contains(i) ){
+                return i;
+            }
+            
+        }
+        return -1;
+        
     }
 }
