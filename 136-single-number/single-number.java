@@ -1,10 +1,18 @@
-class Solution {
+
+import java.util.Map.Entry;class Solution {
     public int singleNumber(int[] nums) {
-        // we can just xor these , and get the odd value out
-        int ans=0;
-        for(int i=0; i<nums.length; i++){
-            ans^=nums[i];
+        HashMap<Integer, Integer> m= new HashMap<>();
+        int n = nums.length;
+        for(int i =0; i<n ; i++){
+            m.put(nums[i], m.getOrDefault(nums[i], 0)+1);
+        } 
+        for(Entry<Integer, Integer> entry: m.entrySet()){
+
+            if(entry.getValue()== 1){
+                int num= entry.getKey();
+                return num;
+            }
         }
-        return ans;
+        return -1;
     }
 }
