@@ -1,22 +1,102 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        //in-place Solution
-        int index =0;
-        for(int i =0; i<nums.length; i++){
-            if(nums[i] !=0){
-
-                //swap isnt necessary when i and index are same , we swap only when element is not zero, and index and i are different
-                if(i != index){
-                // swap this to the index position as that has the latest zero
-                int temp = nums[index];
-                nums[index]= nums[i];
-                nums[i]= temp;
-                
-                }
-                index ++;
-                
+        int n = nums.length;
+        int left =0;
+         int i =1;
+         while(i<n){
+            if(nums[left]==0 & nums[i] != 0){
+                nums[left++] =nums[i];
+                nums[i]=0;
             }
-        }
+            if(nums[left] !=0){
+                left ++;
+            }
+
+            i++;
+         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //in-place Solution
+        // int index =0;
+        // for(int i =0; i<nums.length; i++){
+        //     if(nums[i] !=0){
+
+        //         //swap isnt necessary when i and index are same , we swap only when element is not zero, and index and i are different
+        //         if(i != index){
+        //         // swap this to the index position as that has the latest zero
+        //         int temp = nums[index];
+        //         nums[index]= nums[i];
+        //         nums[i]= temp;
+                
+        //         }
+        //         index ++;
+                
+        //     }
+        // }
 
 //wont work, as they need it to be in-place
 //        int count=0;
