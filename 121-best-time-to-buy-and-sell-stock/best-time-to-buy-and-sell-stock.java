@@ -1,37 +1,66 @@
 class Solution {
     public int maxProfit(int[] prices) {
+int minprice=Integer.MAX_VALUE;
+int maxProfit= 0;
+
+for(int i=0;i<prices.length; i++){
+    minprice= Math.min(minprice, prices[i]);
+    maxProfit= Math.max(maxProfit, prices[i]-minprice);
+
+}
+
+return maxProfit;
+
+// logic is broken, ***********************************
+
+// Wrong Answer
+// 141 / 212 testcases passed
+
+// Editorial
+// Input
+// prices =
+// [2,4,1]
+
+// Use Testcase
+// Output
+// 3
+// Expected
+// 2
+
+
+//  int minprice=prices[0];
+//  int maxprice =0;
+// int indmin=0;
+//  for(int i =1;i<prices.length; i++){
+//     if(prices[i]<minprice){
+//         minprice= prices[i];
+//         indmin=i;
+//     }
+//     else if(indmin <i  && maxprice<prices[i] ){
+//         maxprice=prices[i];
+//     }
+//  }
+// if(maxprice>minprice){
+//     return maxprice-minprice;
+// }
+
+
+// return 0;
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // int n = prices.length;
+        // int minprice=Integer.MAX_VALUE;
+        // int maxProfit=0;
+        // for(int i =0; i<n; i++){
+
         
-        // int n =prices.length;
-        // int maxi=0;
-        // for(int i=0;i<n;i++){
-        //     for(int j=i+1; j<n;j++){
-        //         int diff = prices[j]-prices[i];
-        //         if(diff>maxi){
-        //             maxi=diff;
-        //         }
-        //     }
+        //     minprice= Math.min(minprice, prices[i]);
+        //     maxProfit= Math.max(maxProfit, prices[i] - minprice);
+
         // }
 
-        // return maxi;
-        //TLE- 
-
-
-        //no need for 2 loops, you only have to subtract the min value from, current values to find if this is the new max profit
-
-        int min_price= Integer.MAX_VALUE;
-        int max_profit=0;
-
-        for(int price: prices){
-            //first check if new lowest price there
-            if(price < min_price){
-                min_price= price;
-            }
-            int probable_profit = price - min_price;
-
-            max_profit = Math.max(max_profit, probable_profit);
-
-        }
-return max_profit;
-
+        // return maxProfit;
     }
 }
