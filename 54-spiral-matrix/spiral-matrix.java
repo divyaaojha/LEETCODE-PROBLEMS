@@ -1,44 +1,49 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        int row = matrix.length;
-        int col = matrix[0].length;
+        int top=0; // first row no
+        int bottom= matrix.length -1 ; // last row no
 
-    // so we need four pointers, left at 0, right at col-1, top at 0, and bottom at row-1
-    //we have to increment and decrement them accordingly, also have to make sure that while 
-    //decreasing or increasing them , rows dont cross over rows, and cols dont cross over cols,
+        int left=0 ;// first col no
+        int right=matrix[0].length -1; // last col no
 
-    int left=0; int right = col-1;
-    int top=0; int bottom= row-1;
-    List<Integer> ans= new ArrayList<>();
-    //overall condition is, top must be <= bottom, and left must be <= right, they should not cross
-    while(left<=right && top<=bottom){
-        //traversal left to right
-        for(int i = left; i<=right; i++){
-            ans.add(matrix[top][i]);
-        }
-        top++;
+        List<Integer> ans = new ArrayList<>();
 
-        //top to bottom
-        for(int i =top; i<=bottom; i++){
-            ans.add(matrix[i][right]);
-        }
-        right--;
 
-        //right to left (we did top++ above), we need to make sure it didnt cross bottom
-        if(top<=bottom){for(int i = right; i>=left;i--){
-            ans.add(matrix[bottom][i]);
-        }
-        bottom--; }
-        
+        while(top <= bottom && left <= right){
+            //step 1
+            //traversing left to right
+            for(int i = left; i <= right; i++ ){
+                ans.add( matrix[top][i] );
+            }
+            top++; //top row traversed, so naturally top will comedown, 
 
-        //bottom to top , we did right -- above, need to make sure it didnt cross left 
-        if(left<=right){  
+            //step 2
+            //traversing top to bottom, due to top++ top startes from nxt row, perfect 
+            for(int i = top; i <= bottom; i++){
+                ans.add( matrix[i][right] );
+            }
+            right--;
+
+            //step 3
+            //traversing right to left, which we will only do if rows remain, so mandatory check top<=bottom, here
+            if(top <= bottom){
+            for(int i= right; i>=left; i--){
+                ans.add( matrix[bottom][i] );
+            }
+            bottom--;
+            }
+
+            //step 4
+            //traversing bottom to top, which we will only do if column remain, so mandatory check left<=rightm, here
+            if(left <= right){
             for(int i= bottom; i>=top; i--){
-            ans.add(matrix[i][left]);
+                ans.add( matrix[i][left] );
+            }
+            left++;
+            }
+            
         }
-        left++;}
-       
-    }
-return ans;
+
+        return ans;
     }
 }
