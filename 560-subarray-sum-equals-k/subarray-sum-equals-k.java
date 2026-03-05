@@ -1,19 +1,71 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        //optimised, hashmap + prefix sum = solution O(N)- tc, O(N)-sc
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0,1);
-        int prefix=0;
-        int count=0;
-        for(int num: nums){
-            prefix+=num;
 
-            if(map.containsKey(prefix-k)){
-                count += map.get(prefix-k) ;
+        //subarrays are contiguous
+        //brute-force
+
+        int n = nums.length;
+        int count=0;
+        for(int i =0; i<n; i++){
+            int sum=0;
+            for(int j =i;j<n; j++ ){
+                sum+= nums[j];
+                if(sum==k){
+                count++;
+                }
             }
-            map.put(prefix, map.getOrDefault(prefix,0)+1);
         }
-    return count;
+
+return count;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     //optimised, hashmap + prefix sum = solution O(N)- tc, O(N)-sc
+    //     HashMap<Integer, Integer> map = new HashMap<>();
+    //     map.put(0,1);//**************************imp step dnt forget */
+    //     int prefix=0;
+    //     int count=0;
+    //     for(int num: nums){
+    //         prefix+=num;
+
+    //         if(map.containsKey(prefix-k)){
+    //             //how many prefix-k exist, i.e their frequency;
+    //             count += map.get(prefix-k) ;
+    //         }
+    //         map.put(prefix, map.getOrDefault(prefix,0)+1);
+    //     }
+    // return count;
 
         //THIS WORKS BUT IS O(n2) tc:
         // // sliding window concept - wont work, as it only works for positive arrays, 
