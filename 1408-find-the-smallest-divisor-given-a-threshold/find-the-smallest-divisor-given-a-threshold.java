@@ -9,6 +9,8 @@ class Solution {
             min = Math.min(min, i);
             max = Math.max(max, i);
         }
+
+        //1 can be divisor or lower limit of mid will be from 1 to max., not from min of array to max
         int l = 1; int r = max;
 
         while(l<=r){
