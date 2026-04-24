@@ -16,31 +16,24 @@ class Solution {
             
             }
             
-             
              if(index >k){
                 index =k;
             }
-            s = s.substring(0,index);
-        }
+             s = s.substring(0,index);
+       }
 
         return s;
 
-
-
-
-    //     if(strs.length==0 || strs == null){
-    //         return "";
-    //     }
-    //     String prefix = strs[0];
-    //     for(int i =0; i<strs.length; i++){
-    //         while(strs[i].indexOf(prefix) != 0){
-    //             prefix = prefix.substring(0, prefix.length() -1);
-    //             if(prefix.isEmpty()){
-    //                 return "";
-    //             }
-    //         }
-    //     }
-    // return prefix;
-        
     }
 }
+            // 🔴 4. Redundant + confusing update
+                // if(index > k){
+                //     index = k;
+                // }
+                // s = s.substring(0, index);
+
+                // 👉 This works, but:
+
+                // index is unnecessary
+                // you're already shrinking s
+ 
