@@ -59,5 +59,10 @@ class Solution {
 
         return ans;
 
+        // Complexity comparison
+        // Approach	Time	Notes
+        // Yours	O(n²) worst-case	substring called multiple times
+        // Optimal	O(n)	only one substring
+
     }
 }
