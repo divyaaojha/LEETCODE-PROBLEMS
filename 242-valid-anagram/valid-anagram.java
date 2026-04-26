@@ -1,5 +1,30 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+
+
+        if(s.length() != t.length()){
+            return false;
+        }
+
+        int[]freq =  new int[26]; 
+        // for(int i =0; i<s.length(); i++){
+        //     freq[s.charAt(i) -'a']++;
+        //     freq[t.charAt(i) -'a']--;
+        // }
+        for(char c : s.toCharArray()){
+            freq[c-'a']++;
+        }
+        for(char c: t.toCharArray()){
+            freq[c-'a']--;
+        }
+        for(int f: freq){
+            if(f!=0)return false;
+        }
+        return true;
+
+
+ //************************************************************************************************************ */       
+        //works 
         // char[]cs = s.toCharArray();
         // char[] ct = t.toCharArray();
         // Arrays.sort(cs);
@@ -46,19 +71,7 @@ class Solution {
 // map.put(c, map.getOrDefault(c, 0) + 1);
 
 /****************************************************************************************** */
-        if(s.length() != t.length()){
-            return false;
-        }
-
-        int[]freq =  new int[26]; 
-        for(int i =0; i<s.length(); i++){
-            freq[s.charAt(i) -'a']++;
-            freq[t.charAt(i) -'a']--;
-        }
-        for(int f: freq){
-            if(f!=0)return false;
-        }
-        return true;
+        
 
     }
 }
