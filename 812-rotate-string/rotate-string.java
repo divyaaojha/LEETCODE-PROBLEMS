@@ -2,16 +2,50 @@ class Solution {
    
     
     public boolean rotateString(String s, String goal) {
-        if(s.length() != goal.length())return false;
-        String str = s+s;
-        if(str.contains(goal)){
-            return true;
+
+        //optimised, smart solution
+        // if(s.length() != goal.length())return false;
+        // String str = s+s;
+        // if(str.contains(goal)){
+        //     return true;
+        // }
+        // return false;
+         if (s.length() != goal.length()) return false;
+
+        int n = s.length();
+
+        for (int k = 0; k < n; k++) {
+            int i = 0;
+            for (; i < n; i++) {
+                if (s.charAt((i + k) % n) != goal.charAt(i)) {
+                    break;
+                }
+            }
+            if (i == n) return true; // full match
         }
+
         return false;
 
 
 
-        //only half correct- not working for aaab-> abaa kinda case 42/62 test cases 
+//only half correct- not working for aaab-> abaa kinda case 42/62 test cases 
+
+// Wrong Answer
+// 42 / 62 testcases passed
+// submitted at Apr 26, 2026 10:17
+
+
+// Input
+// s =
+// "defdefdefabcabc"
+// goal =
+// "defdefabcabcdef"
+
+// Use Testcase
+// Output
+// false
+// Expected
+// true
         
         // if(s.length() != goal.length())return false;
         // int n = s.length();
