@@ -30,24 +30,40 @@ class Solution {
 //let me add a check to count if count of different element , return false
 
 HashMap<Character, Character> map1 = new HashMap<>();
-Set<Character> sset= new HashSet<>();
-Set<Character> tset= new HashSet<>();
+HashMap<Character, Character> map2 = new HashMap<>();
 
 
        for(int i = 0; i<ssize; i++){
-        sset.add(s.charAt(i));
-        tset.add(t.charAt(i));
+       
         if(map1.containsKey(s.charAt(i)) ){
             if(map1.get(s.charAt(i)) != t.charAt(i)){
                 return false;
             }
         }
+        
          else {
-            map1.put(s.charAt(i), t.charAt(i));
+            if(!map1.containsKey(t.charAt(i))){
+                map1.put(s.charAt(i), t.charAt(i));
+            }
+            
         }
+
+          if(map2.containsKey(t.charAt(i)) ){
+            if(map2.get(t.charAt(i)) != s.charAt(i)){
+                return false;
+            }
+        }
+        
+         else {
+            if(!map2.containsKey(s.charAt(i))){
+                map2.put(t.charAt(i), s.charAt(i));
+            }
+            
+        }
+
        
        }
-       if(sset.size() != tset.size())return false;
+       
     
        return true;
     }
