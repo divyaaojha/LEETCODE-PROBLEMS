@@ -9,36 +9,50 @@
  * }
  */
 class Solution {
-    
     public ListNode middleNode(ListNode head) {
 
-        //using slow fast pointer
         ListNode slow = head;
-        ListNode fast =head;
-        while(fast != null && fast.next != null){
+        ListNode fast = head;
+        while(slow !=null && fast != null && fast.next != null){
             slow = slow.next;
-            fast = fast.next.next;
-        } 
-return slow; // this will be at the middle, after coming out of while loop
+            fast= fast.next.next;
+        }
+        return slow;
 
-    }}
+        //brute force approach - accepted ************************************************************************
+        // if(head.next ==null)return head;
+        // ListNode temp = head;
+        // int count = 0;
+        // while(temp != null){
+        //     count++;
+        //     temp = temp.next;
+        // }
+        // if(count % 2 !=0){
+        //     int ele =0;
+        //     ListNode temp1=head;
+        //     while(temp1 != null){
+        //         ele++;
+        //         if(ele == count/2 ){
+        //             temp1 = temp1.next;
+        //             return temp1;
+        //         }
+        //         temp1= temp1.next;
+        //     }
 
-        //do zero based indexing - did the sum myselffff********************************
-//         ListNode middle = head;
-//         if(head.next==null){
-//             return head;
-//         }
-//         int i =0;
-        
-//         while(middle!=null){
-//             middle = middle.next;
-//             i++;
-//         }
-//         int pos = i/2;
-//         for(int j =0; j<pos; j++){
-//          head = head.next ;
-            
-//         }
-//         return head;
-//     }
-// }
+        // }
+        // else{
+        //     ListNode temp2 = head;
+        //     int ele=0;
+        //      while(temp2 != null){
+        //         ele++;
+        //         if(ele == count/2 ){
+        //             temp2 = temp2.next;
+        //             return temp2;
+        //         }
+        //         temp2= temp2.next;
+        //     }
+
+        // }
+        // return null;
+    }
+}
