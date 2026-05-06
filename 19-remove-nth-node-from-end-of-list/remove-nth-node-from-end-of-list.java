@@ -21,13 +21,14 @@ class Solution {
             temp = temp.next;
         }
 
+        //the loop below fails to delete the head, as it starts deleteing from temp.next = temp.next.next
          if(n == len){
             return head.next;
         }
-        int i = len -n +1;
+        int i = len -n ;
         len =1;
         while(temp1 != null){
-            if(len == i-1){
+            if(len == i){
                 
                 temp1.next = temp1.next.next;
             }
