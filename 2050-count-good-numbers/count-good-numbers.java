@@ -1,6 +1,6 @@
 class Solution {
     long mod = 1000000007;
-    public long pow( int x, long n){
+    public long pow( long x, long n){
         if(n==0)return 1;
 
         long half = pow (x, n/2);
