@@ -1,5 +1,79 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
+        int countzero= 0;
+        int mul = 1;
+
+        int n = nums.length;
+        int[]answers = new int[n];
+
+        for(int i=0; i<n; i++){
+            if(nums[i]==0)countzero++;
+            else{
+            mul*=nums[i];
+            }
+           
+
+            if(countzero >1)return answers;
+        }
+
+        for(int i =0; i<n; i++){
+            if(nums[i]==0){
+                Arrays.fill(answers, 0);
+                answers[i]= mul;
+                return answers;
+            }
+            answers[i]= mul /nums[i];
+        }
+        return answers;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
     int n = nums.length;
     int [] answers= new int [n];
     int mul=1;
@@ -27,11 +101,9 @@ class Solution {
             answers[i]=  mul / nums[i];
         }
 
-        
-
-
     }
     return answers;
         
     }
 }
+*/
