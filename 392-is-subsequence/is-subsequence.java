@@ -1,24 +1,18 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
-        int n = t.length(); //pointer i for t
-        int m = s.length(); // pointer j for s
+       int slen=0;
+       int tlen=0;
 
-        if(m>n){
-            return false;
+       while(tlen< t.length() && slen< s.length()){
+        if(s.charAt(slen)==t.charAt(tlen)){
+            slen++;
+            tlen++;
         }
-
-        int j=0;
-        for(int i=0; i<n && j<m ; i++){
-            if(t.charAt(i)== s.charAt(j)){
-                j++;
-            }
+        else{
+            tlen++;
         }
-
-        if(j>=m){
-            return true;
-        }
-
-        return false;
-
+       } 
+       if(slen == s.length())return true;
+       return false;
     }
 }
