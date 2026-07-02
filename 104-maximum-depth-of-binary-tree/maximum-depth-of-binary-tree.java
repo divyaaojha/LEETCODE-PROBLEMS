@@ -14,19 +14,16 @@
  * }
  */
 class Solution {
-    
     public int maxDepth(TreeNode root) {
-       return  height(root);
+        return recurdepth(root);
     }
 
-    public int height(TreeNode node){
-        if(node ==null){
-            return 0;
-        }
+    private int recurdepth(TreeNode node){
+        if(node ==null) return 0;
 
-        int leftheight= height(node.left);
-        int rightheight= height(node.right);
+        int leftdepth= recurdepth(node.left);
+        int rightdepth= recurdepth(node.right);
 
-        return 1 + Math.max(leftheight, rightheight);
+        return 1 + (Math.max(leftdepth, rightdepth));    
     }
 }
