@@ -1,16 +1,12 @@
-import java.security.KeyStore.Entry;class Solution {
+class Solution {
     public int[] twoSum(int[] nums, int target) {
-       HashMap <Integer, Integer> map = new HashMap<>();
-       int i=0;
-       for(int num: nums){
-        
-
-        if(map.containsKey(target-num)  ){
-            return new int[] {i, map.get(target-num)};
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i =0; i< nums.length; i++){
+            if(!map.isEmpty() && map.containsKey(target -nums[i])){
+                 return new int[]  {i, map.get(target- nums[i])};
+            }
+            map.put(nums[i], i);
         }
-        map.put(num, i );
-        i++;
-       }
-      return new int[] {};
+        return new int[0];
     }
 }
