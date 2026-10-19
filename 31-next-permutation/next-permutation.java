@@ -1,66 +1,38 @@
 class Solution {
-    public void swap(int []nums, int a, int b){
-        int temp =nums[a];
-        nums[a]= nums[b];
-        nums[b]= temp;
-    }
-    public void reverse(int []nums, int l, int r){
-        while(l<r){
-         swap(nums, l++, r--);
-
-        }
-    }
     public void nextPermutation(int[] nums) {
+      //if from last we traverse, on right large ele than its left ele, then swap, and return, after comparing if that is greater, also for descending ele array we can make them  a separatebcase and handle, in 231, we compared , 3 left and 1right, right ele smaller so leave it, move leftwards, now compare 2left, and 3 right, the right is more so swap with its neighbour left, and return  
 
-        int n = nums.length;
-        //step 1
-        int pivot= n-2;
-        while(pivot >=0 && nums[pivot] >= nums[pivot+1]){
-            pivot--;
+      int n = nums.length;
+      int i =n-2;
+
+      //loop to move i to the ele which is smaller than its right ele
+      while(i>=0 && nums[i]>= nums[i+1]){
+        i--;
+      }
+
+      //now finding the right ele mor ethan the ele at i, but smallest among all right
+     if(i>=0){
+        int j = n-1;
+        while(nums[j] <= nums[i]){
+            j--;
         }
 
-        //step 2 find first smallest largest than pivot
-        if(pivot >=0){
-            int newlarge=n-1;
-         while(newlarge >=0 && nums[newlarge] <= nums[pivot]){
-            newlarge--;
-         }
-         swap(nums, pivot, newlarge);
-        }
-        
-        reverse(nums, pivot+1, n-1);
+        //found at j, now swap
+        int temp= nums[j];
+        nums[j]= nums[i];
+        nums[i]= temp;
+     }
 
+     //reversing suffix
+     int l = i+1;
+     int r =n-1;
+     while(l<r){
+        int temp= nums[l];
+        nums[l]= nums[r];
+        nums[r]= temp;
+        l++;
+        r--;
+     }
 
-        // // finding next nextPermutation means finding the next increasing smallest change, which is next in lexograohically just next, 
-        // //This we make sure in 2 steps, 
-        // //step 1: FIND THE PIVOT(first element from right, smaller than its next or just rightward element)
-        // //step 2: after pivot to last n-1, is definitely strictly decreasing element,so the first element we come across which is greate rthan pivot from the smallest from among the greater suffix, and swap them
-        // //step 3: now reverse the suffix, 
-        // //the result is the next nextPermutation which is lexographically increasing next
-
-        // int n = nums.length;
-        // //pivot, we will start comparing from n-1 th ele
-        // int i=n-2;
-        // //step 1
-        // while( i>=0 && nums[i] >= nums[i+1]){
-        //     //if no element greater than i;  i =-1. which menas just reverse, as the order which we have is the larget, so we need to go to the first order.
-        //     i--;
-        // }
-
-        // //step 2 
-        // // i.e ( i != -1 ), we got an element greater than pivot right next to it
-        // if( i>=0 ){
-        //     int j =n-1;
-        //     while(nums[j] <= nums[i]){
-        //         j--;
-        //     }
-        //     swap(nums, i, j);
-        // }
-
-        // //step 3 , reverse from pivot+1 to n-1
-        // reverse(nums, i+1, n-1);
-
-       
-        
     }
 }
