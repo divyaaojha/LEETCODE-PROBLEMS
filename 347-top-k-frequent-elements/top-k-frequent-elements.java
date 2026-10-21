@@ -1,36 +1,27 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-       
-        HashMap<Integer,Integer> map = new HashMap<>();
+        if (nums.length==1){
+            return nums;
+        }
+        Map<Integer, Integer> map = new HashMap<>();
         
-        //updated map
+        //freq of all elements stored in it
         for(int num: nums){
-            map.put(num, map.getOrDefault(num, 0) +1);
+            map.put( num, map.getOrDefault(num, 0)+1 );
         }
 
-        //this is MINHEAP
-        PriorityQueue<Map.Entry<Integer,Integer>>pq= new PriorityQueue<> (( a,b) -> a.getValue() - b.getValue());
+        List<Integer> sortedList = new ArrayList<>(map.keySet()); //entered all keys in this and sorted them on the basis of their values/freqs
 
-        //now we will insert in pq, only k max value, wale key-value pairs, and removing min ele from top if size more than k
-        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
-            pq.offer(entry);
-            if(pq.size() > k){
-                pq.poll();
-            }
+        sortedList.sort((a,b) -> map.get(b)-map.get(a));
+
+        int[]ans = new int[k];
+        
+        for(int i =0; i<k ; i++){
+            ans[i]= sortedList.get(i);
         }
 
-        int[] ans = new int[k];
-        int index=0;
-
-        while(!pq.isEmpty()){
-            ans[index] = pq.poll().getKey(); // get key of the value
-            index++;
-        }
-
-
-return ans;
-
-
-
-    }
+        return ans;
+        
+       
+    }     
 }
